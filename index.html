@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>理科 中間テスト対策</title>
+<style>
+:root{--ink:#243334;--muted:#647371;--paper:#fffdf8;--mint:#dff1eb;--green:#2d7566;--orange:#e28352;--blue:#5e8fa0;--line:#d6e2dd;--red:#c65c50}
+*{box-sizing:border-box}body{margin:0;background:#edf3f0;color:var(--ink);font-family:system-ui,-apple-system,"Hiragino Kaku Gothic ProN",Meiryo,sans-serif;line-height:1.7}.wrap{max-width:900px;margin:0 auto;padding:22px 16px 52px}.hero{background:linear-gradient(135deg,#243334,#35695f);color:#fff;border-radius:24px;padding:28px 24px;margin-bottom:18px}.eyebrow{font-size:.78rem;letter-spacing:.12em;color:#b9e3d6}.hero h1{font-size:clamp(1.7rem,4vw,2.5rem);line-height:1.25;margin:7px 0}.hero p{color:#e1efeb;margin:8px 0 0}.panel,.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;box-shadow:0 7px 20px #274c3c0c}.panel{padding:15px;margin-bottom:18px}.tabs{display:flex;gap:8px;flex-wrap:wrap}.tab{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;padding:8px 13px;cursor:pointer;font:inherit}.tab.active{background:var(--green);border-color:var(--green);color:#fff}.tab.accent{border-color:#efc4a7;background:#fff8f1}.progress{display:flex;justify-content:space-between;gap:12px;align-items:center;color:var(--muted);font-size:.9rem;margin-top:13px}.bar{height:9px;background:#e4ece8;border-radius:20px;overflow:hidden;margin-top:8px}.bar span{display:block;height:100%;background:var(--orange);width:0;transition:.25s}.card{padding:22px;margin-bottom:18px}.meta{display:flex;justify-content:space-between;gap:10px;font-size:.83rem;color:var(--muted)}.q{font-size:1.13rem;font-weight:700;white-space:pre-wrap;margin:13px 0 16px}.choices{display:grid;gap:9px}.choice{display:block;border:1px solid var(--line);border-radius:12px;padding:11px 13px;background:#fff;cursor:pointer}.choice:hover{border-color:var(--green);background:#f2faf6}.choice input{margin-right:8px;accent-color:var(--green)}input[type=text],input[type=number]{width:100%;border:1px solid var(--line);border-radius:12px;padding:12px;font:inherit;background:#fff}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.btn{border:0;border-radius:12px;padding:11px 16px;font:inherit;cursor:pointer;background:var(--green);color:#fff}.btn.secondary{background:#e6efeb;color:var(--ink)}.btn.orange{background:var(--orange)}.btn:disabled{opacity:.45;cursor:not-allowed}.hint{margin:0 0 14px;background:#fff4e8;border-left:4px solid var(--orange);border-radius:10px;padding:10px 12px;color:#75452e}.feedback{margin-top:16px;padding:13px 14px;border-radius:12px;background:#eef7f1;border-left:4px solid var(--green)}.feedback.wrong{background:#fff1ef;border-left-color:var(--red)}.feedback.pending{background:#fff8ef;border-left-color:var(--orange)}.small{font-size:.88rem;color:var(--muted)}.summary{text-align:center;padding:24px}.summary strong{font-size:2.1rem;color:var(--green)}.rank{display:grid;gap:9px}.rank-row{display:grid;grid-template-columns:32px 1fr auto;gap:9px;align-items:center;border-bottom:1px solid var(--line);padding:9px 0}.rank-row:last-child{border-bottom:0}.badge{display:inline-block;border-radius:999px;background:#edf5f1;padding:3px 9px;color:var(--green);font-size:.78rem}.timer{font-weight:700;color:var(--red)}footer{text-align:center;color:var(--muted);font-size:.78rem;margin-top:20px}
+</style>
+<style>
+.source-box{margin:14px 0 0;padding:12px;background:#f2f7f4;border:1px solid var(--line);border-radius:14px}.source-box img{display:block;width:100%;max-height:720px;object-fit:contain;background:#fff;border-radius:9px}.source-box p{margin:8px 0 0}.history-row{display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center;border-bottom:1px solid var(--line);padding:10px 0}.history-row:last-child{border-bottom:0}.status{display:inline-block;border-radius:999px;padding:2px 8px;font-size:.75rem;background:#edf5f1;color:var(--green)}.status.pending{background:#fff1ef;color:var(--red)}
+</style>
+</head>
+<body><main class="wrap">
+<section class="hero"><div class="eyebrow">SCIENCE WORKBOOK · P29–43 / P50 / P52–55</div><h1>理科 中間テスト対策</h1><p>身のまわりの物質・気体・水溶液を、1問ずつ確認しよう。</p></section>
+<section class="panel"><div class="tabs" id="units"></div><div class="tabs" id="modes" style="margin-top:10px"></div><div class="progress"><span id="count"></span><span id="score"></span></div><div class="bar"><span id="bar"></span></div></section>
+<section id="app"></section><footer>問題・正答・本誌ページは、指定されたワークと解答集の範囲をもとに整理しています。</footer>
+</main><script>
+const QUESTIONS=[
+{unit:'物質',page:30,type:'choice',q:'砂糖や食塩のように、燃えて二酸化炭素ができる物質を何という？',choices:['有機物','無機物','金属','混合物'],answer:0,hint:'炭素をふくむ物質に注目。',ex:'有機物。燃えると二酸化炭素ができるものが多くあります。'},
+{unit:'物質',page:30,type:'choice',q:'有機物ではない物質を何という？',choices:['無機物','有機物','溶質','溶媒'],answer:0,hint:'有機物の反対の分類。',ex:'無機物。金属やガラスなどがふくまれます。'},
+{unit:'物質',page:31,type:'choice',q:'金属に共通する性質として正しいものはどれ？',choices:['電気をよく通す','すべて水にとける','必ず磁石につく','燃えると酸素が出る'],answer:0,hint:'電気回路で使われるものを思い出そう。',ex:'金属は電気や熱をよく通し、みがくと光沢が出ます。'},
+{unit:'物質',page:31,type:'choice',q:'金属をみがくと見られる、金属特有の輝きを何という？',choices:['金属光沢','透明度','沸点','融点'],answer:0,hint:'「光沢」という言葉が入る。',ex:'金属光沢。金属をみがくと光を反射して輝きます。'},
+{unit:'物質',page:31,type:'text',q:'物質1cm³あたりの質量を何という？',answers:['密度'],hint:'質量÷体積で求める量。',ex:'密度。密度〔g/cm³〕＝質量〔g〕÷体積〔cm³〕です。'},
+{unit:'物質',page:31,type:'text',q:'密度0.8g/cm³、体積400cm³の液体の質量は何g？',answers:['320','320g'],hint:'質量＝密度×体積。',ex:'0.8×400＝320gです。'},
+{unit:'物質',page:31,type:'choice',q:'密度を使って物質を見分けるとき、必要な2つの値は？',choices:['質量と体積','温度と時間','色とにおい','長さと面積'],answer:0,hint:'密度の公式を思い出そう。',ex:'質量と体積から密度を計算し、物質ごとの値と比べます。'},
+{unit:'物質',page:29,type:'choice',q:'ガスバーナーに点火するとき、最初に行うことは？',choices:['空気調節ねじを閉じる','元栓を全開にする','炎を手で囲む','水をかける'],answer:0,hint:'点火前は空気が多く入りすぎないようにする。',ex:'空気調節ねじを閉じてから、ガス調節ねじを少し開きます。'},
+{unit:'物質',page:29,type:'choice',q:'ガスバーナーの炎を調節し、青色で安定した炎にするには？',choices:['空気調節ねじを開く','ガス調節ねじだけを閉じる','元栓を閉める','マッチを近づけ続ける'],answer:0,hint:'青い炎には空気が必要。',ex:'空気調節ねじを開いて、空気とガスの量を調節します。'},
+{unit:'物質',page:29,type:'choice',q:'ガスバーナーの火を消すとき、正しい順番は？',choices:['ガス調節ねじ→元栓','空気調節ねじ→元栓','元栓→ガス調節ねじ','空気調節ねじ→ガス調節ねじ'],answer:0,hint:'まず炎を消す操作から。',ex:'ガス調節ねじを閉じ、次に元栓を閉じます。'},
+{unit:'物質',page:32,type:'choice',q:'砂糖を熱したとき、黒くなった物質は何？',choices:['炭素','酸素','水素','窒素'],answer:0,hint:'黒い固体として残るもの。',ex:'炭素。砂糖などの有機物には炭素がふくまれています。'},
+{unit:'物質',page:32,type:'choice',q:'有機物を燃やしたとき、石灰水を白くにごらせる気体は？',choices:['二酸化炭素','酸素','水素','アンモニア'],answer:0,hint:'石灰水の反応を思い出そう。',ex:'二酸化炭素。石灰水を白くにごらせます。'},
+{unit:'気体',page:33,type:'choice',q:'二酸化炭素の性質として正しいものは？',choices:['ものを燃やすはたらきがない','水素より軽い','においが強い','赤色リトマス紙を青色にする'],answer:0,hint:'ろうそくの火を入れた結果。',ex:'二酸化炭素にはものを燃やすはたらきがありません。空気より重い気体です。'},
+{unit:'気体',page:33,type:'choice',q:'酸素の中に火のついた線香を入れるとどうなる？',choices:['炎を上げて燃える','消える','黄色く変色する','白くにごる'],answer:0,hint:'酸素は燃焼を助ける。',ex:'酸素にはものを燃やすはたらきがあり、線香は炎を上げて燃えます。'},
+{unit:'気体',page:33,type:'text',q:'二酸化炭素を石灰水に通すと、石灰水はどうなる？',answers:['白くにごる','白濁する','白く濁る'],hint:'二酸化炭素の確認方法。',ex:'白くにごります。'},
+{unit:'気体',page:33,type:'choice',q:'アンモニアの性質として正しいものは？',choices:['水に非常によくとける','水に全くとけない','空気より重い','ものを燃やす'],answer:0,hint:'噴水実験で起こること。',ex:'アンモニアは水に非常によくとけ、空気より軽い気体です。'},
+{unit:'気体',page:34,type:'choice',q:'水にとけやすい気体を集める方法は？',choices:['水上置換法','上方置換法だけ','下方置換法だけ','ろ過'],answer:0,hint:'水にとけにくい気体なら水を使える。',ex:'水上置換法。水にとけにくい気体を集める方法です。'},
+{unit:'気体',page:34,type:'choice',q:'空気より軽く、水にとけやすいアンモニアを集める方法は？',choices:['上方置換法','下方置換法','水上置換法','蒸留'],answer:0,hint:'軽い気体は上へ集まる。',ex:'上方置換法。アンモニアは空気より軽いので、容器を逆さにします。'},
+{unit:'気体',page:35,type:'choice',q:'アンモニアを集めた容器に水を入れて逆さにすると、水が入ってくるのはなぜ？',choices:['アンモニアが水にとけ、容器内の圧力が下がるから','アンモニアが燃えるから','水が重いから','酸素が増えるから'],answer:0,hint:'噴水実験の原因は、気体の溶けやすさ。',ex:'アンモニアが水に非常によくとけ、容器内の圧力が下がるためです。'},
+{unit:'気体',page:35,type:'choice',q:'気体を集めた容器の中で、気体が上からたまるか下からたまるかを決める性質は？',choices:['空気との密度の大小','色','燃えやすさだけ','温度だけ'],answer:0,hint:'空気より軽いか重いか。',ex:'空気との密度の大小で、上方置換法か下方置換法かを判断します。'},
+{unit:'気体',page:52,type:'choice',q:'水にとけにくく、空気より密度が小さい気体の集め方は？',choices:['水上置換法','上方置換法','下方置換法','ろ過'],answer:1,hint:'軽い気体は上に集まる。',ex:'上方置換法。水にとけにくい場合は水上置換法も使えます。'},
+{unit:'気体',page:52,type:'choice',q:'水にとけにくく、空気より密度が大きい気体の集め方は？',choices:['水上置換法','上方置換法','下方置換法','蒸発'],answer:2,hint:'重い気体は下にたまる。',ex:'下方置換法。二酸化炭素などに使います。'},
+{unit:'気体',page:52,type:'choice',q:'気体の性質を調べるとき、においを直接かいではいけない理由は？',choices:['有害な気体を吸い込む危険があるから','においが消えるから','色が変わるから','重さが変わるから'],answer:0,hint:'安全に関する注意。',ex:'有害な気体を吸い込む危険があるため、手であおいで少量を確認します。'},
+{unit:'水溶液',page:36,type:'choice',q:'物質が水にとけて見えなくなっても、その物質はどうなっている？',choices:['水中に均一に広がっている','消えてなくなった','底にすべて沈んだ','気体に変化した'],answer:0,hint:'粒子のモデルで考える。',ex:'とけた物質の粒子が、水の粒子の間に均一に広がっています。'},
+{unit:'水溶液',page:36,type:'choice',q:'水溶液をつくるとき、とかす物質を何という？',choices:['溶質','溶媒','溶液','ろ液'],answer:0,hint:'食塩水なら食塩にあたる。',ex:'溶質。食塩水では食塩が溶質です。'},
+{unit:'水溶液',page:36,type:'choice',q:'水溶液をつくるとき、溶質をとかす液体を何という？',choices:['溶媒','溶質','結晶','ろ紙'],answer:0,hint:'食塩水なら水にあたる。',ex:'溶媒。食塩水では水が溶媒です。'},
+{unit:'水溶液',page:37,type:'choice',q:'水溶液を加熱して水を蒸発させ、溶質を取り出す方法を何という？',choices:['蒸発','ろ過','蒸留','凝固'],answer:0,hint:'水を気体にして取り除く。',ex:'蒸発。水を蒸発させて溶質を取り出します。'},
+{unit:'水溶液',page:37,type:'choice',q:'ろ過で、ろ紙を通り抜けた液体を何という？',choices:['ろ液','ろ紙','残留物','溶質'],answer:0,hint:'ろ過の「液」。',ex:'ろ液。ろ紙を通り抜けた液体です。'},
+{unit:'水溶液',page:37,type:'choice',q:'ろ過で、ろ紙に残った固体を何という？',choices:['残留物','ろ液','溶媒','水溶液'],answer:0,hint:'残った物質の名前。',ex:'残留物。ろ紙に残った固体です。'},
+{unit:'水溶液',page:37,type:'choice',q:'質量パーセント濃度を求める式は？',choices:['溶質の質量÷溶液の質量×100','溶液の質量÷溶質の質量×100','溶媒の質量÷溶質の質量×100','溶質の体積÷溶液の体積×100'],answer:0,hint:'全体に対する溶質の割合。',ex:'質量パーセント濃度〔%〕＝溶質の質量÷溶液の質量×100です。'},
+{unit:'水溶液',page:38,type:'text',q:'食塩10gを水90gにとかした食塩水の質量パーセント濃度は何％？',answers:['10','10%'],hint:'溶液の質量は10＋90。',ex:'10÷100×100＝10％です。'},
+{unit:'水溶液',page:38,type:'text',q:'食塩12gを水228gにとかした食塩水の質量パーセント濃度は何％？',answers:['5','5%'],hint:'溶液の質量は240g。',ex:'12÷240×100＝5％です。'},
+{unit:'水溶液',page:39,type:'text',q:'15％の食塩水300gにふくまれる食塩は何g？',answers:['45','45g'],hint:'溶質＝溶液×濃度÷100。',ex:'300×15÷100＝45gです。'},
+{unit:'水溶液',page:39,type:'text',q:'水480gに食塩20gをとかした食塩水の質量は何g？',answers:['500','500g'],hint:'水と食塩を足す。',ex:'480＋20＝500gです。'},
+{unit:'水溶液',page:40,type:'choice',q:'温度によって水にとける物質の最大量が変わることを表すグラフを何という？',choices:['溶解度曲線','気圧曲線','温度曲線','密度曲線'],answer:0,hint:'「とける量」のグラフ。',ex:'溶解度曲線。温度と、100gの水にとける物質の質量を表します。'},
+{unit:'水溶液',page:40,type:'choice',q:'水100gに物質が最大でとける質量を何という？',choices:['溶解度','濃度','密度','質量パーセント濃度'],answer:0,hint:'温度ごとの最大量。',ex:'溶解度。ふつう100gの水にとける物質の質量で表します。'},
+{unit:'水溶液',page:40,type:'choice',q:'温度を下げると溶解度が大きく下がる物質は、冷やすとどうなりやすい？',choices:['結晶が出てくる','気体になる','密度が0になる','燃え始める'],answer:0,hint:'とけていられなくなった分。',ex:'結晶が出てきます。溶解度をこえた分が結晶になります。'},
+{unit:'水溶液',page:41,type:'choice',q:'水溶液から結晶を取り出すとき、まず水溶液をろ過する目的は？',choices:['不溶物を取り除くため','水をすべて凍らせるため','温度を上げるため','気体を発生させるため'],answer:0,hint:'結晶に混ざると困るものを先に除く。',ex:'不溶物を取り除き、純粋な結晶を取り出しやすくします。'},
+{unit:'水溶液',page:41,type:'choice',q:'水溶液を冷やして結晶を取り出す操作を何という？',choices:['再結晶','蒸留','燃焼','中和'],answer:0,hint:'もう一度、結晶にする。',ex:'再結晶。溶解度の差を利用して物質を分けます。'},
+{unit:'水溶液',page:42,type:'text',q:'20℃で水100gにミョウバン約11gがとける。ミョウバン20gを水100gに入れたとき、溶け残るのは約何g？',answers:['9','9g'],hint:'最大11gまで溶ける。',ex:'20−11＝約9gです。'},
+{unit:'水溶液',page:42,type:'choice',q:'溶解度曲線から、温度を下げても結晶がほとんど出ない物質は？',choices:['溶解度の変化が小さい物質','温度で溶解度が大きく変わる物質','必ず気体になる物質','金属だけ'],answer:0,hint:'曲線の傾きが小さい物質。',ex:'溶解度の変化が小さい物質は、冷やしても結晶が出にくいです。'},
+{unit:'水溶液',page:43,type:'choice',q:'ろ過をするとき、ガラス棒を伝わらせて液体を注ぐ理由は？',choices:['ろ紙が破れるのを防ぐため','液体を温めるため','気体を集めるため','色を変えるため'],answer:0,hint:'ろ紙を傷つけない工夫。',ex:'液体の勢いでろ紙が破れるのを防ぎます。'},
+{unit:'水溶液',page:43,type:'choice',q:'ろ過で、ろ紙の折り目をろうとに密着させるのはなぜ？',choices:['ろ過をすみやかにするため','結晶を燃やすため','水を蒸発させるため','気体を軽くするため'],answer:0,hint:'液体の通り道をつくる。',ex:'ろ紙とろうとの間にすき間をつくり、ろ過をすみやかにします。'},
+{unit:'まとめ',page:50,type:'choice',q:'密度の単位として、教科書・ワークで使われているものは？',choices:['g/cm³','g/L','cm³/g','％'],answer:0,hint:'1cm³あたりの質量。',ex:'g/cm³（グラム毎立方センチメートル）です。'},
+{unit:'まとめ',page:50,type:'choice',q:'質量パーセント濃度で、分母になるのは？',choices:['溶液の質量','溶質の質量','水の体積','結晶の質量'],answer:0,hint:'全体が分母。',ex:'溶液の質量が分母です。'},
+{unit:'まとめ',page:50,type:'choice',q:'水溶液とは、どのような液体？',choices:['物質が水に均一にとけた液体','固体が沈んだ液体','気体だけの液体','水を含まない液体'],answer:0,hint:'「均一に」という言葉。',ex:'物質が水に均一にとけた液体です。'},
+{unit:'水溶液',page:53,type:'text',q:'エタノールと水の混合物を加熱して分ける方法を何という？',answers:['蒸留'],hint:'沸点の違いを利用する。',ex:'蒸留。沸点の違いを利用して液体を分けます。'},
+{unit:'水溶液',page:53,type:'choice',q:'エタノールは水よりも沸点がどうなっている？',choices:['低い','高い','同じ','沸点がない'],answer:0,hint:'先に気体になる方。',ex:'エタノールの沸点は水より低いため、先に蒸発します。'},
+{unit:'水溶液',page:54,type:'choice',q:'水溶液を加熱するとき、突沸を防ぐために入れるものは？',choices:['沸騰石','食塩','ろ紙','鉄粉'],answer:0,hint:'急に沸騰するのを防ぐ石。',ex:'沸騰石。液体が急に沸騰する突沸を防ぎます。'},
+{unit:'気体',page:54,type:'choice',q:'気体の発生実験で、試験管を加熱する前に確認することは？',choices:['導管の先を水の中に入れる','ゴム栓を外す','試験管を逆さにする','炎を直接試験管に入れる'],answer:0,hint:'発生した気体を逃がさない。',ex:'導管の先を水の中に入れてから加熱します。'},
+{unit:'まとめ',page:55,type:'choice',q:'物質が固体から液体に変化することを何という？',choices:['融解','凝固','気化','液化'],answer:0,hint:'氷が水になる変化。',ex:'融解。固体が液体になる変化です。'},
+{unit:'まとめ',page:55,type:'choice',q:'液体が気体に変化することを何という？',choices:['気化','液化','凝固','融解'],answer:0,hint:'水が水蒸気になる変化。',ex:'気化。蒸発や沸騰がふくまれます。'}
+];
+
+// ワークの「練習問題」「実験」「表・グラフ」「まとめ」の小問を追加登録。
+// 既存の主要問題と重なる内容も、元の設問単位で復習できるように残している。
+const EXTRA_QUESTIONS=[
+{unit:'物質',page:29,type:'choice',q:'ガスバーナーの炎を調節するとき、ガスの量を調節するねじはどれ？',choices:['ガス調節ねじ','空気調節ねじ','元栓','コック'],answer:0,hint:'炎の大きさを変えるねじ。',ex:'ガス調節ねじでガスの量を調節します。'},
+{unit:'物質',page:29,type:'choice',q:'ガスバーナーの炎を青色にするために調節するねじはどれ？',choices:['空気調節ねじ','ガス調節ねじ','元栓','コック'],answer:0,hint:'空気の量を調節するねじ。',ex:'空気調節ねじで空気の量を調節します。'},
+{unit:'物質',page:29,type:'choice',q:'ガスバーナーの点火で、マッチの炎を近づける位置はどこ？',choices:['ガスの出口の上','元栓の横','空気調節ねじの下','机の上'],answer:0,hint:'ガスが出てくる場所。',ex:'ガスの出口の上にマッチの炎を近づけます。'},
+{unit:'物質',page:29,type:'choice',q:'ガスバーナーの炎が赤色で大きく揺れるとき、まず何を調節する？',choices:['空気調節ねじ','水の量','ろ紙','試験管の角度'],answer:0,hint:'青い炎には空気が必要。',ex:'空気調節ねじを開き、空気とガスの割合を調節します。'},
+{unit:'物質',page:29,type:'choice',q:'ガスバーナーを使うとき、炎の先端を加熱するもののどこに当てる？',choices:['加熱する部分','ゴム栓','導管の先','机'],answer:0,hint:'最も温度が高い部分を使う。',ex:'炎の外炎の先端付近を、加熱する部分に当てます。'},
+{unit:'物質',page:29,type:'choice',q:'ガスバーナーの元栓を開くのはいつ？',choices:['ガス調節ねじを少し開いて点火する前','火を消した後','器具を片付けた後','空気調節ねじを外した後'],answer:0,hint:'点火の準備の段階。',ex:'空気調節ねじを閉じ、ガス調節ねじを少し開いた状態で元栓を開きます。'},
+{unit:'物質',page:30,type:'choice',q:'白い粉末A〜Dのうち、水にとけて水溶液になるものを調べる実験で、観察するものは？',choices:['水に入れたときのようす','磁石につくかだけ','炎の色だけ','音の大きさ'],answer:0,hint:'粉末を水に入れる実験。',ex:'水にとけるか、にごるか、沈むかなどを観察します。'},
+{unit:'物質',page:30,type:'choice',q:'白い粉末を加熱したとき、燃えて黒くなった物質は？',choices:['有機物','無機物','金属','ガラス'],answer:0,hint:'炭素を含む物質。',ex:'燃えて黒くなる粉末は、有機物と考えられます。'},
+{unit:'物質',page:30,type:'choice',q:'白い粉末を加熱したとき、変化しなかった物質は？',choices:['無機物の可能性が高い','必ず有機物','必ず金属','必ず気体'],answer:0,hint:'有機物と無機物の違い。',ex:'有機物のように燃えて黒くなる変化がなければ、無機物の可能性があります。'},
+{unit:'物質',page:30,type:'choice',q:'ロウを燃やしたときにできる液体のようなものは何？',choices:['水','酸素','二酸化炭素','窒素'],answer:0,hint:'燃焼でできる水を確認する。',ex:'ロウの燃焼では水ができ、冷えた部分に水滴として見られます。'},
+{unit:'物質',page:30,type:'choice',q:'ロウや砂糖のように、炭素をふくむ物質をまとめて何という？',choices:['有機物','無機物','金属','溶液'],answer:0,hint:'炭素をふくむ物質の分類。',ex:'有機物です。'},
+{unit:'物質',page:30,type:'choice',q:'有機物を完全に燃やすと、主に何と何ができる？',choices:['二酸化炭素と水','酸素と水素','窒素と酸素','食塩と水'],answer:0,hint:'燃焼後の気体と液体。',ex:'二酸化炭素と水ができます。'},
+{unit:'物質',page:31,type:'choice',q:'電気を通す性質をもつ物質はどれ？',choices:['銅','ガラス','ゴム','プラスチック'],answer:0,hint:'電線に使われる金属。',ex:'銅は金属で、電気をよく通します。'},
+{unit:'物質',page:31,type:'choice',q:'金属をたたいて広げたり、引きのばしたりできる性質は？',choices:['展性・延性','透明性','溶解性','蒸発性'],answer:0,hint:'金属を加工できる性質。',ex:'金属には展性や延性があります。'},
+{unit:'物質',page:31,type:'choice',q:'金属のうち、磁石につくものはどれ？',choices:['鉄','アルミニウム','銅','金'],answer:0,hint:'磁石に引きつけられる代表的な金属。',ex:'鉄は磁石につきます。すべての金属が磁石につくわけではありません。'},
+{unit:'物質',page:31,type:'text',q:'質量7.87g、体積1cm³の物質の密度は何g/cm³？',answers:['7.87','7.87g/cm³'],hint:'密度＝質量÷体積。',ex:'7.87÷1＝7.87g/cm³です。'},
+{unit:'物質',page:31,type:'text',q:'密度2.70g/cm³、体積10cm³のアルミニウムの質量は何g？',answers:['27','27g'],hint:'質量＝密度×体積。',ex:'2.70×10＝27gです。'},
+{unit:'物質',page:31,type:'choice',q:'水の密度を1.00g/cm³とすると、密度0.92g/cm³の油は水にどうなる？',choices:['水に浮く','水に沈む','水と同じ場所に消える','気体になる'],answer:0,hint:'水より密度が小さい物質。',ex:'水より密度が小さいので浮きます。'},
+{unit:'気体',page:32,type:'choice',q:'砂糖を加熱して黒くなったことから、砂糖にふくまれると考えられる元素は？',choices:['炭素','鉄','銅','アルミニウム'],answer:0,hint:'黒い固体として残ったもの。',ex:'炭素です。'},
+{unit:'気体',page:32,type:'choice',q:'砂糖を加熱したときに発生した水を確認するものは？',choices:['青色の塩化コバルト紙','石灰水','赤色リトマス紙','線香'],answer:0,hint:'水で色が変わる試験紙。',ex:'青色の塩化コバルト紙が赤色に変化します。'},
+{unit:'気体',page:32,type:'choice',q:'二酸化炭素を確認するために使う液体は？',choices:['石灰水','食塩水','アンモニア水','エタノール'],answer:0,hint:'白くにごる液体。',ex:'石灰水です。'},
+{unit:'気体',page:32,type:'choice',q:'木片を燃やしたとき、炎を上げて燃えたことから分かることは？',choices:['有機物である可能性がある','金属である','水にとける','空気より重い'],answer:0,hint:'燃焼する物質の分類。',ex:'木片は有機物で、燃焼によって二酸化炭素や水ができます。'},
+{unit:'気体',page:32,type:'choice',q:'食塩を加熱しても黒くならないことから、食塩は？',choices:['無機物','有機物','気体','混合物だけ'],answer:0,hint:'燃えて黒くなるかどうか。',ex:'食塩は無機物です。'},
+{unit:'気体',page:32,type:'choice',q:'砂糖・食塩・アルミニウムのうち、金属光沢があるものは？',choices:['アルミニウム','砂糖','食塩','すべて'],answer:0,hint:'金属の名前に注目。',ex:'アルミニウムです。'},
+{unit:'気体',page:33,type:'choice',q:'二酸化炭素を集めたびんに火のついたろうそくを入れると？',choices:['火が消える','火が強くなる','青色になる','水が出る'],answer:0,hint:'燃焼を助けるかどうか。',ex:'二酸化炭素はものを燃やさないので火が消えます。'},
+{unit:'気体',page:33,type:'choice',q:'酸素を集めたびんに火のついた線香を入れると？',choices:['炎を上げて燃える','すぐ消える','白くにごる','赤色になる'],answer:0,hint:'酸素の燃焼を助ける性質。',ex:'酸素はものを燃やすはたらきがあるため、線香が炎を上げて燃えます。'},
+{unit:'気体',page:33,type:'choice',q:'酸素と二酸化炭素を見分ける方法として適切なのは？',choices:['火のついた線香を入れる','磁石を近づける','ろ紙でこす​​る','冷やして結晶を見る'],answer:0,hint:'燃焼を助ける性質の違い。',ex:'酸素では燃焼が強まり、二酸化炭素では火が消えます。'},
+{unit:'気体',page:33,type:'choice',q:'アンモニアを発生させるとき、塩化アンモニウムと何を混ぜて加熱する？',choices:['水酸化カルシウム','食塩','銅','二酸化炭素'],answer:0,hint:'アンモニア発生実験の薬品。',ex:'塩化アンモニウムと水酸化カルシウムを混ぜて加熱します。'},
+{unit:'気体',page:33,type:'choice',q:'アンモニアの水溶液に赤色リトマス紙を入れると？',choices:['青色になる','赤色のまま','白くにごる','黄色になる'],answer:0,hint:'アンモニア水はアルカリ性。',ex:'赤色リトマス紙が青色になります。'},
+{unit:'気体',page:34,type:'choice',q:'水上置換法で気体を集めるとき、集める気体は水に対して？',choices:['とけにくい','非常によくとける','必ず反応する','必ず液体になる'],answer:0,hint:'水中で集められる条件。',ex:'水にとけにくい気体を集めます。'},
+{unit:'気体',page:34,type:'choice',q:'二酸化炭素を集める方法として使えるものは？',choices:['下方置換法','上方置換法だけ','ろ過だけ','再結晶だけ'],answer:0,hint:'空気より重い気体。',ex:'二酸化炭素は空気より重いので下方置換法で集められます。'},
+{unit:'気体',page:34,type:'choice',q:'空気より軽い気体を集めるとき、容器の口はどうする？',choices:['下向きにする','上向きにする','水中に沈めるだけ','ふたをする'],answer:0,hint:'軽い気体は上にたまる。',ex:'容器の口を下向きにする上方置換法を使います。'},
+{unit:'気体',page:34,type:'choice',q:'空気より重い気体を集めるとき、容器の口はどうする？',choices:['上向きにする','下向きにする','横向きに固定する','必ず水中に入れる'],answer:0,hint:'重い気体は下にたまる。',ex:'容器の口を上向きにする下方置換法を使います。'},
+{unit:'気体',page:35,type:'choice',q:'アンモニアを集めるのに水上置換法が適さない理由は？',choices:['水に非常によくとけるから','空気より軽いから','色がないから','燃えるから'],answer:0,hint:'水との関係を思い出す。',ex:'アンモニアは水に非常によくとけるため、水上置換法では集められません。'},
+{unit:'気体',page:35,type:'choice',q:'集めたアンモニアに水を入れる実験で、水が噴き上がる現象を何という？',choices:['噴水','蒸留','再結晶','ろ過'],answer:0,hint:'水が上へ噴き出す実験。',ex:'噴水実験です。'},
+{unit:'気体',page:35,type:'choice',q:'気体を集める方法を選ぶとき、空気との何を比べる？',choices:['密度','色だけ','沸点だけ','電気抵抗'],answer:0,hint:'軽いか重いかの判断。',ex:'空気との密度を比べます。'},
+{unit:'水溶液',page:36,type:'choice',q:'コーヒーシュガーを水に入れてかき混ぜると見えなくなるのはなぜ？',choices:['水にとけたから','燃えたから','気体になったから','底に沈んだから'],answer:0,hint:'水溶液の粒子モデル。',ex:'コーヒーシュガーが水にとけ、粒子が均一に広がったからです。'},
+{unit:'水溶液',page:36,type:'choice',q:'水にとけた物質を、時間がたっても取り出しにくい理由は？',choices:['水中に均一に広がっているから','すべて底に沈むから','磁石につくから','気体になったから'],answer:0,hint:'水溶液は均一な混合物。',ex:'溶質が水中に均一に広がっているためです。'},
+{unit:'水溶液',page:36,type:'choice',q:'物質を水にとかす操作で、溶ける速さを速くする方法は？',choices:['かき混ぜる','静かに置く','温度を下げるだけ','容器を閉じる'],answer:0,hint:'水と物質をよく接触させる。',ex:'かき混ぜると、物質と水が接触しやすくなります。'},
+{unit:'水溶液',page:36,type:'choice',q:'水にとける物質の量には限度があることを何と表す？',choices:['飽和','燃焼','凝固','密度'],answer:0,hint:'これ以上とけない状態。',ex:'溶解度に達してこれ以上とけない状態を飽和といいます。'},
+{unit:'水溶液',page:37,type:'choice',q:'溶液の質量は、溶質と何の質量を合わせたもの？',choices:['溶媒','ろ紙','結晶だけ','空気'],answer:0,hint:'食塩水なら食塩＋水。',ex:'溶液の質量＝溶質の質量＋溶媒の質量です。'},
+{unit:'水溶液',page:37,type:'choice',q:'砂糖水の溶質はどれ？',choices:['砂糖','水','砂糖水','ろ紙'],answer:0,hint:'とかした物質。',ex:'砂糖が溶質、水が溶媒です。'},
+{unit:'水溶液',page:37,type:'choice',q:'食塩水の溶媒はどれ？',choices:['水','食塩','食塩水','結晶'],answer:0,hint:'溶質をとかす液体。',ex:'水が溶媒です。'},
+{unit:'水溶液',page:37,type:'choice',q:'水溶液の濃さを比べるために使う量は？',choices:['質量パーセント濃度','密度だけ','沸点だけ','体積だけ'],answer:0,hint:'溶質が全体の何％か。',ex:'質量パーセント濃度を使います。'},
+{unit:'水溶液',page:37,type:'text',q:'溶液100gに溶質20gがふくまれるとき、溶媒は何g？',answers:['80','80g'],hint:'溶液−溶質。',ex:'100−20＝80gです。'},
+{unit:'水溶液',page:37,type:'text',q:'溶質5g、溶媒95gの溶液の質量は何g？',answers:['100','100g'],hint:'溶質＋溶媒。',ex:'5＋95＝100gです。'},
+{unit:'水溶液',page:38,type:'text',q:'食塩5gを水95gにとかした食塩水の濃度は何％？',answers:['5','5%'],hint:'溶液は100g。',ex:'5÷100×100＝5％です。'},
+{unit:'水溶液',page:38,type:'text',q:'砂糖20gを水80gにとかした砂糖水の濃度は何％？',answers:['20','20%'],hint:'溶液は100g。',ex:'20÷100×100＝20％です。'},
+{unit:'水溶液',page:38,type:'choice',q:'食塩水Aは食塩5g・水95g、Bは食塩5g・水45g。濃いのはどちら？',choices:['B','A','同じ','判断できない'],answer:0,hint:'同じ食塩量でも全体の質量が違う。',ex:'Bは5÷50×100＝10％、Aは5％なのでBが濃いです。'},
+{unit:'水溶液',page:38,type:'text',q:'濃度10％の食塩水200gにふくまれる食塩は何g？',answers:['20','20g'],hint:'200×10÷100。',ex:'20gです。'},
+{unit:'水溶液',page:39,type:'text',q:'20％の砂糖水350gにふくまれる砂糖は何g？',answers:['70','70g'],hint:'350×20÷100。',ex:'70gです。'},
+{unit:'水溶液',page:39,type:'text',q:'12％の食塩水500gにふくまれる食塩は何g？',answers:['60','60g'],hint:'500×12÷100。',ex:'60gです。'},
+{unit:'水溶液',page:39,type:'text',q:'食塩30gで15％の食塩水をつくるとき、食塩水全体は何g？',answers:['200','200g'],hint:'溶液＝溶質÷濃度×100。',ex:'30÷15×100＝200gです。'},
+{unit:'水溶液',page:39,type:'text',q:'食塩30gで15％の食塩水をつくるとき、水は何g？',answers:['170','170g'],hint:'食塩水全体から食塩を引く。',ex:'200−30＝170gです。'},
+{unit:'水溶液',page:40,type:'choice',q:'溶解度曲線の横軸は通常何を表す？',choices:['温度','時間','密度','体積'],answer:0,hint:'温度が変わると溶ける量が変わる。',ex:'横軸は温度、縦軸は100gの水にとける物質の質量です。'},
+{unit:'水溶液',page:40,type:'choice',q:'溶解度曲線の縦軸は何を表す？',choices:['100gの水にとける物質の質量','水溶液の体積','温度','時間'],answer:0,hint:'最大何gとけるか。',ex:'100gの水にとける物質の質量を表します。'},
+{unit:'水溶液',page:40,type:'choice',q:'同じ温度で溶解度曲線の上にある点は、どの状態？',choices:['とける限度をこえている','まだ何でもとける','すべて気体','必ず凍っている'],answer:0,hint:'最大量より多い物質。',ex:'その温度でとける限度をこえているため、溶け残りや結晶ができます。'},
+{unit:'水溶液',page:40,type:'choice',q:'溶解度が温度で大きく変化する物質は、再結晶で分けやすい？',choices:['分けやすい','分けにくい','絶対に分けられない','気体になる'],answer:0,hint:'温度差を利用する。',ex:'温度による溶解度の差が大きいほど、再結晶で分けやすいです。'},
+{unit:'水溶液',page:41,type:'choice',q:'40℃の水100gに硝酸カリウム約64gがとけるとき、20℃まで冷やすと？',choices:['溶解度の差の分だけ結晶が出る','すべて気体になる','水がなくなる','濃度が必ず0％になる'],answer:0,hint:'冷やすと最大量が下がる。',ex:'20℃でとける量をこえた分が結晶として出ます。'},
+{unit:'水溶液',page:41,type:'choice',q:'溶解度曲線から、ある温度で結晶が出る量を求めるには？',choices:['高温でとける量−低温でとける量','温度＋時間','密度×体積','水の質量÷温度'],answer:0,hint:'冷やす前と後の差。',ex:'同じ水の質量なら、高温と低温の溶解度の差から求めます。'},
+{unit:'水溶液',page:41,type:'choice',q:'水の量が200gのとき、溶解度の値はどう扱う？',choices:['100gの水の場合の2倍にする','半分にする','温度を2倍にする','そのまま必ず使う'],answer:0,hint:'水の量に比例する。',ex:'溶解度は100gの水を基準にするので、水200gなら2倍にします。'},
+{unit:'水溶液',page:41,type:'choice',q:'溶解度曲線で、温度を下げても線の変化が小さい物質は？',choices:['冷やしても結晶が出にくい','冷やすと必ず大量に出る','必ず水にとけない','必ず気体になる'],answer:0,hint:'線の傾きが小さい。',ex:'温度による溶解度の差が小さいため、結晶が出にくいです。'},
+{unit:'水溶液',page:42,type:'text',q:'40℃で水100gにミョウバン約24gがとける。20℃で約11gなら、冷やして出る結晶は約何g？',answers:['13','13g'],hint:'24−11。',ex:'約13gです。'},
+{unit:'水溶液',page:42,type:'text',q:'60℃で水100gに硝酸カリウム約110gがとけ、20℃では約32g。冷やして出る結晶は約何g？',answers:['78','78g'],hint:'110−32。',ex:'約78gです。'},
+{unit:'水溶液',page:42,type:'choice',q:'溶解度曲線を読むとき、まず確認する2つの値は？',choices:['温度と溶解度','時間と密度','体積と沸点','色とにおい'],answer:0,hint:'グラフの横軸と縦軸。',ex:'温度に対する溶解度を読み取ります。'},
+{unit:'水溶液',page:43,type:'choice',q:'ろ過でろ紙をろうとに入れる前に、ろ紙を何でぬらす？',choices:['少量の水','食塩水','エタノールだけ','油'],answer:0,hint:'ろ紙をろうとに密着させる。',ex:'少量の水でぬらし、ろうとに密着させます。'},
+{unit:'水溶液',page:43,type:'choice',q:'ろ過で液体を注ぐとき、液体の高さはろ紙のどこまでにする？',choices:['ろ紙の上端より低くする','ろ紙より高くあふれさせる','ろうとの外まで入れる','高さは関係ない'],answer:0,hint:'ろ紙からあふれないようにする。',ex:'ろ紙の上端より低くし、あふれないようにします。'},
+{unit:'水溶液',page:43,type:'choice',q:'ろ過でろ紙に残るものは何？',choices:['残留物','ろ液','溶媒','蒸気'],answer:0,hint:'ろ紙に残った固体。',ex:'残留物です。'},
+{unit:'水溶液',page:43,type:'choice',q:'ろ過でビーカーに集まる液体は何？',choices:['ろ液','残留物','結晶だけ','ろ紙'],answer:0,hint:'ろ紙を通り抜けた液体。',ex:'ろ液です。'},
+{unit:'まとめ',page:50,type:'choice',q:'物質の性質として、ワークで調べる項目に含まれるものは？',choices:['密度や水へのとけ方','曜日だけ','身長だけ','音楽の速さ'],answer:0,hint:'物質を見分ける手がかり。',ex:'密度、水へのとけ方、燃え方などは物質の性質です。'},
+{unit:'まとめ',page:50,type:'choice',q:'気体を集める方法を選ぶときに使う性質は？',choices:['水へのとけやすさと空気との密度','色と音','硬さと光沢','融点だけ'],answer:0,hint:'水上・上方・下方置換法の選択。',ex:'水へのとけやすさと空気との密度を使います。'},
+{unit:'まとめ',page:50,type:'choice',q:'水溶液から物質を取り出す方法として正しい組合せは？',choices:['蒸発や再結晶','燃焼や磁石','切断や研磨','音波や光'],answer:0,hint:'水を取り除く・冷やす。',ex:'蒸発や再結晶で溶質を取り出します。'},
+{unit:'まとめ',page:50,type:'choice',q:'物質が液体から固体になる変化は？',choices:['凝固','融解','気化','液化'],answer:0,hint:'水が氷になる変化。',ex:'凝固です。'},
+{unit:'まとめ',page:50,type:'choice',q:'気体が液体になる変化は？',choices:['液化','気化','融解','凝固'],answer:0,hint:'水蒸気が水になる変化。',ex:'液化です。'},
+{unit:'まとめ',page:50,type:'choice',q:'液体が気体になる変化は？',choices:['気化','液化','凝固','融解'],answer:0,hint:'蒸発・沸騰を含む。',ex:'気化です。'},
+{unit:'物質',page:52,type:'choice',q:'金属をたたくと音が響く性質を何と表す？',choices:['金属音','金属光沢','展性','密度'],answer:0,hint:'音に関する金属の性質。',ex:'金属音です。'},
+{unit:'物質',page:52,type:'choice',q:'物質の密度を求めるとき、体積を測る器具は？',choices:['メスシリンダー','温度計','ろうと','ガスバーナー'],answer:0,hint:'液体の体積も測る器具。',ex:'メスシリンダーを使います。'},
+{unit:'気体',page:52,type:'choice',q:'気体を発生させる実験で、発生した気体が逆流するのを防ぐには？',choices:['加熱をやめる前に導管を水から出す','先にゴム栓を外す','水を全部捨てる','容器を強く振る'],answer:0,hint:'冷えると水が逆流する。',ex:'加熱をやめる前に導管の先を水から出します。'},
+{unit:'気体',page:52,type:'choice',q:'発生した気体を集め終わったら、最初に何をする？',choices:['導管を水から出す','水を加熱する','ゴム栓を強く押す','火を大きくする'],answer:0,hint:'逆流防止の操作。',ex:'導管を水から出してから加熱をやめます。'},
+{unit:'水溶液',page:52,type:'choice',q:'水溶液の濃度を求めるとき、溶液の質量は何の合計？',choices:['溶質と水の質量','温度と時間','密度と体積だけ','ろ紙とろ液'],answer:0,hint:'食塩水の全体量。',ex:'溶質と溶媒である水の質量の合計です。'},
+{unit:'水溶液',page:52,type:'text',q:'質量パーセント濃度の単位を答えよう。',answers:['％','パーセント','パーセント濃度'],hint:'100分のいくつかで表す。',ex:'％（パーセント）で表します。'},
+{unit:'水溶液',page:53,type:'choice',q:'水溶液を加熱して水だけを蒸発させると、残るのは？',choices:['溶質','溶媒だけ','空気','ろ紙'],answer:0,hint:'水がなくなった後。',ex:'水にとけていた溶質が残ります。'},
+{unit:'水溶液',page:53,type:'choice',q:'水溶液を蒸留すると、沸点の低い成分から先に？',choices:['気体になって出てくる','結晶になる','ろ紙に残る','磁石につく'],answer:0,hint:'沸点の違いを利用。',ex:'沸点の低い成分が先に気体になり、冷やされて液体として集まります。'},
+{unit:'水溶液',page:53,type:'choice',q:'エタノールと水を蒸留するとき、出てくる液体を冷やして集める器具は？',choices:['冷却管','ろ紙','メスシリンダーだけ','磁石'],answer:0,hint:'気体を液体に戻す管。',ex:'冷却管で蒸気を冷やして液体にします。'},
+{unit:'水溶液',page:53,type:'choice',q:'蒸留で液体を分けられるのは、何の違いを利用するから？',choices:['沸点','色','密度だけ','磁性'],answer:0,hint:'加熱すると先に沸騰する成分。',ex:'成分ごとの沸点の違いを利用します。'},
+{unit:'水溶液',page:54,type:'choice',q:'水溶液を加熱するとき、急に激しく沸騰する現象を何という？',choices:['突沸','再結晶','液化','ろ過'],answer:0,hint:'突然の沸騰。',ex:'突沸です。'},
+{unit:'気体',page:54,type:'choice',q:'気体の発生実験で、試験管の口を少し下げる理由は？',choices:['液体が加熱部へ流れ戻るのを防ぐため','気体を重くするため','炎を青くするため','ろ紙を乾かすため'],answer:0,hint:'加熱した液体が冷たい口元へ流れる。',ex:'液体が加熱部に流れ戻って試験管が割れるのを防ぎます。'},
+{unit:'気体',page:54,type:'choice',q:'気体の性質を調べるとき、においをかぐ方法は？',choices:['手であおいで少量を鼻に近づける','容器に鼻を直接入れる','強く吸い込む','加熱してから直接かぐ'],answer:0,hint:'安全なにおいの確認方法。',ex:'手であおいで少量を近づけます。'},
+{unit:'まとめ',page:55,type:'choice',q:'固体が液体になるとき、体積や形はどうなる？',choices:['形が変わり、液体として流れる','必ず気体になる','質量がなくなる','色が必ず青になる'],answer:0,hint:'氷から水への変化。',ex:'形を保てなくなり、液体として流れます。'},
+{unit:'まとめ',page:55,type:'choice',q:'液体が固体になるときの変化を何という？',choices:['凝固','融解','気化','蒸留'],answer:0,hint:'水が氷になる。',ex:'凝固です。'},
+{unit:'まとめ',page:55,type:'choice',q:'物質の状態変化で、質量はどうなる？',choices:['変化の前後で変わらない','必ず0になる','必ず2倍になる','温度と同じになる'],answer:0,hint:'状態が変わっても物質の量は？',ex:'外へ出入りがなければ、状態変化の前後で質量は変わりません。'}
+];
+QUESTIONS.push(...EXTRA_QUESTIONS);
+
+const KEY='scienceWorkbookStateV1';let state={answers:{},mistakes:{},recovered:{},reviewFeedback:{},history:[],resume:null,mode:'all',unit:'すべて',index:0,session:[],timer:null,timeLeft:0,recordedThisSession:false};
+try{Object.assign(state,JSON.parse(localStorage.getItem(KEY)||'{}'))}catch(e){}
+const $=s=>document.querySelector(s), save=()=>localStorage.setItem(KEY,JSON.stringify({answers:state.answers,mistakes:state.mistakes,recovered:state.recovered,reviewFeedback:state.reviewFeedback,history:state.history,resume:state.resume}));
+function unitList(){return state.unit==='すべて'?QUESTIONS:QUESTIONS.filter(q=>q.unit===state.unit)}
+function shuffle(a){return [...a].sort(()=>Math.random()-.5)}
+function daily(){let seed=new Date().toISOString().slice(0,10).replace(/-/g,'');return shuffle(QUESTIONS).slice(0,10)}
+function currentList(){if(state.mode==='today'||state.mode==='test'||state.mode==='resume')return state.session;if(state.mode==='mistakes')return unitList().filter(q=>state.mistakes[QUESTIONS.indexOf(q)]&&!state.recovered[QUESTIONS.indexOf(q)]);return unitList()}
+function renderNav(){let units=['すべて',...new Set(QUESTIONS.map(q=>q.unit))];$('#units').innerHTML=units.map(u=>`<button class="tab ${state.unit===u?'active':''}" data-u="${u}">${u}${u==='すべて'?'':`（${QUESTIONS.filter(q=>q.unit===u).length}）`}</button>`).join('');document.querySelectorAll('[data-u]').forEach(b=>b.onclick=()=>{state.unit=b.dataset.u;state.index=0;startMode();render()});let modes=[['all','全問'],['today','今日の10問'],['mistakes','間違えた問題'],['test','テスト形式'],['rank','苦手ランキング'],['pages','苦手ページ'],['history','学習履歴']];if(state.resume)modes.splice(2,0,['resume','前回の続き']);$('#modes').innerHTML=modes.map(([m,l])=>`<button class="tab ${state.mode===m?'active':''} ${m==='today'?'accent':''}" data-m="${m}">${l}</button>`).join('');document.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{state.mode=b.dataset.m;state.index=0;startMode();render()})}
+function rememberPosition(){if(['all','today','test','resume','mistakes'].includes(state.mode)){let resumeList=state.mode==='all'?unitList():currentList();state.resume={mode:state.mode,unit:state.unit,index:state.index,sessionIds:resumeList.map(q=>QUESTIONS.indexOf(q))};save()}}
+function startMode(){if(state.mode==='today')state.session=daily();else if(state.mode==='test')state.session=shuffle(unitList()).slice(0,10);else if(state.mode==='resume'&&state.resume){state.unit=state.resume.unit;state.session=(state.resume.sessionIds||[]).map(i=>QUESTIONS[i]).filter(Boolean);state.index=Math.min(state.resume.index||0,state.session.length)}else state.session=[];state.recordedThisSession=false;if(state.mode==='test'){state.timeLeft=300;clearInterval(state.timer);state.timer=setInterval(()=>{state.timeLeft--;if(state.timeLeft<=0){clearInterval(state.timer);state.index=currentList().length;render()}else updateTimer()},1000)}else clearInterval(state.timer)}
+function updateTimer(){let t=$('#timer');if(t)t.textContent=`残り ${Math.floor(state.timeLeft/60)}:${String(state.timeLeft%60).padStart(2,'0')}`}
+function isCorrect(q,v){if(q.type==='choice')return Number(v)===q.answer;let n=String(v).replace(/[\s　g％%]/gi,'').toLowerCase();return q.answers.some(a=>n===String(a).replace(/[\s　g％%]/gi,'').toLowerCase())}
+function answerCount(){return Object.keys(state.answers).length}
+function render(){renderNav();let list=currentList();if(state.mode==='rank'){renderRank();return}$('#timer')?.remove();if(!list.length){$('#count').textContent='';$('#score').textContent='';$('#bar').style.width='0';$('#app').innerHTML=`<section class="card summary"><h2>まだ問題がありません</h2><p>まずは「全問」か「今日の10問」を解いてみよう。</p></section>`;return}if(state.index>=list.length){renderSummary(list);return}let q=list[state.index],key=QUESTIONS.indexOf(q),old=state.answers[key], answered=old!==undefined;$('#count').innerHTML=`${state.mode==='test'?'<span id="timer" class="timer"></span> ':''}${state.unit}　${state.index+1} / ${list.length}問`;$('#score').textContent=`正解 ${list.filter(x=>state.answers[QUESTIONS.indexOf(x)]?.ok).length}問`;$('#bar').style.width=`${state.index/list.length*100}%`;if(state.mode==='test')updateTimer();let body=q.type==='choice'?`<div class="choices">${q.choices.map((c,i)=>`<label class="choice"><input type="radio" name="ans" value="${i}" ${old?.value==i?'checked':''} ${answered?'disabled':''}>${c}</label>`).join('')}</div>`:`<input id="textAnswer" type="text" placeholder="答えを入力" value="${old?.value||''}" ${answered?'disabled':''}>`;let hint=answered?`<div class="hint"><strong>ヒント：</strong>${q.hint}</div>`:`<button class="btn secondary" id="hintBtn" type="button">ヒントを見る</button><div class="hint" id="hintBox" hidden><strong>ヒント：</strong>${q.hint}</div>`;$('#app').innerHTML=`<article class="card"><div class="meta"><span><span class="badge">${q.unit}</span> 本誌 p.${q.page}</span><span>${state.mode==='test'?'テスト':''}</span></div><div class="q">${q.q}</div>${hint}${body}<div class="actions"><button class="btn secondary" id="prev" ${state.index===0?'disabled':''}>前の問題へ</button>${answered?'':'<button class="btn" id="check">答え合わせ</button>'}<button class="btn secondary" id="next" ${answered?'':'disabled'}>次の問題へ</button></div><div id="feedback"></div></article>`;$('#prev').onclick=()=>{state.index--;render()};$('#next').onclick=()=>{state.index++;render()};if(!answered){$('#hintBtn').onclick=()=>{$('#hintBox').hidden=false;$('#hintBtn').hidden=true};$('#check').onclick=()=>check(q,key)}else showFeedback(q,old)}
+function check(q,key){let v=q.type==='choice'?document.querySelector('input[name=ans]:checked')?.value:$('#textAnswer').value.trim();if(v===undefined||v==='')return;let ok=isCorrect(q,v);state.answers[key]={value:v,ok};if(!ok)state.mistakes[key]=(state.mistakes[key]||0)+1;save();render()}
+function showFeedback(q,a){let f=$('#feedback');if(!f)return;f.className='feedback '+(a.ok?'':'wrong');let correct=q.type==='choice'?q.choices[q.answer]:q.answers[0];f.innerHTML=a.ok?`<strong>正解です。</strong><div class="small">${q.ex}</div><div class="small">見直し：本誌 p.${q.page}</div>`:`<strong>もう一度見直そう。</strong><div class="small">正答：${correct}</div><div class="small">${q.ex}</div><div class="small">見直し：本誌 p.${q.page}</div>`}
+function renderSummary(list){clearInterval(state.timer);let score=list.filter(q=>state.answers[QUESTIONS.indexOf(q)]?.ok).length;$('#count').textContent=`${state.mode==='test'?'テスト':'今回の学習'} 完了`;$('#score').textContent=`${score} / ${list.length}問`;$('#bar').style.width='100%';$('#app').innerHTML=`<section class="card summary"><div class="small">今回の結果</div><strong>${score} / ${list.length}</strong><p>${score===list.length?'よくできました。':'間違えた問題は「間違えた問題」から解き直せます。'}</p><div class="actions" style="justify-content:center"><button class="btn" id="again">もう一度解く</button><button class="btn secondary" id="rankBtn">苦手ランキングを見る</button></div></section>`;$('#again').onclick=()=>{state.index=0;startMode();render()};$('#rankBtn').onclick=()=>{state.mode='rank';render()}}
+function renderRank(){let rows=Object.entries(state.mistakes).map(([key,count])=>({q:QUESTIONS[key],count})).sort((a,b)=>b.count-a.count).slice(0,10);$('#count').textContent='苦手ランキング';$('#score').textContent=`${rows.length}問`;$('#bar').style.width='100%';$('#app').innerHTML=`<section class="card"><h2>苦手ランキング</h2><p class="small">間違えた回数が多い順です。数字が大きい問題から、短く復習しよう。</p>${rows.length?`<div class="rank">${rows.map((r,i)=>`<div class="rank-row"><strong>${i+1}</strong><span>${r.q.q}<br><small>本誌 p.${r.q.page}・${r.q.unit}</small></span><b>${r.count}回</b></div>`).join('')}</div>`:'<p>まだ間違えた問題はありません。</p>'}</section>`}
+function sourcePath(q){return `assets/source-pages/p${q.page}.jpg`}
+function modeLabel(m){return ({all:'全問',today:'今日の10問',test:'テスト形式',mistakes:'間違えた問題',resume:'前回の続き'})[m]||m}
+function render(){
+  renderNav();let list=currentList();
+  if(state.mode==='rank'){renderRank();return}if(state.mode==='pages'){renderPageRank();return}if(state.mode==='history'){renderHistory();return}
+  $('#timer')?.remove();if(!list.length){$('#count').textContent='';$('#score').textContent='';$('#bar').style.width='0';$('#app').innerHTML=`<section class="card summary"><h2>まだ問題がありません</h2><p>まずは「全問」か「今日の10問」を解いてみよう。</p></section>`;return}
+  if(state.index>=list.length){renderSummary(list);return}
+  let q=list[state.index],key=QUESTIONS.indexOf(q),old=state.answers[key],canRetry=state.mode==='mistakes'&&!state.recovered[key],answered=old!==undefined&&!canRetry,feedback=state.reviewFeedback[key];
+  $('#count').innerHTML=`${state.mode==='test'?'<span id="timer" class="timer"></span> ':''}${state.unit}　${state.index+1} / ${list.length}問`;$('#score').textContent=`正解 ${list.filter(x=>state.answers[QUESTIONS.indexOf(x)]?.ok).length}問`;$('#bar').style.width=`${state.index/list.length*100}%`;if(state.mode==='test')updateTimer();
+  let body=q.type==='choice'?`<div class="choices">${q.choices.map((c,i)=>`<label class="choice"><input type="radio" name="ans" value="${i}" ${old?.value==i?'checked':''} ${answered?'disabled':''}>${c}</label>`).join('')}</div>`:`<input id="textAnswer" type="text" placeholder="答えを入力" value="${old?.value||''}" ${answered?'disabled':''}>`;
+  let hint=answered?`<div class="hint"><strong>ヒント：</strong>${q.hint}</div>`:`<button class="btn secondary" id="hintBtn" type="button">ヒントを見る</button><div class="hint" id="hintBox" hidden><strong>ヒント：</strong>${q.hint}</div>`;
+  let source=`<button class="btn secondary" id="sourceBtn" type="button">ワーク p.${q.page}を見る</button><div class="source-box" id="sourceBox" hidden><img src="${sourcePath(q)}" alt="ワーク本誌 p.${q.page}"><p class="small">出題元：ワーク p.${q.page}。図・表・実験手順を確認できます。</p></div>`;
+  $('#app').innerHTML=`<article class="card"><div class="meta"><span><span class="badge">${q.unit}</span> 本誌 p.${q.page}</span><span>${state.mode==='test'?'テスト':''}</span></div><div class="q">${q.q}</div>${hint}${source}${body}<div class="actions"><button class="btn secondary" id="prev" ${state.index===0?'disabled':''}>前の問題へ</button>${answered?'':'<button class="btn" id="check">答え合わせ</button>'}<button class="btn secondary" id="next" ${answered?'':'disabled'}>次の問題へ</button></div><div id="feedback"></div></article>`;
+  $('#prev').onclick=()=>{state.index=Math.max(0,state.index-1);rememberPosition();render()};$('#next').onclick=()=>{state.index++;rememberPosition();render()};$('#sourceBtn').onclick=()=>{$('#sourceBox').hidden=!$('#sourceBox').hidden};
+  if(!answered){$('#hintBtn').onclick=()=>{$('#hintBox').hidden=false;$('#hintBtn').hidden=true};$('#check').onclick=()=>check(q,key)}else showFeedback(q,feedback||old);
+  if(!answered&&feedback)showFeedback(q,feedback);
+}
+function check(q,key){let v=q.type==='choice'?document.querySelector('input[name=ans]:checked')?.value:$('#textAnswer').value.trim();if(v===undefined||v==='')return;let ok=isCorrect(q,v);state.answers[key]={value:v,ok};state.reviewFeedback[key]={value:v,ok};if(!ok)state.mistakes[key]=(state.mistakes[key]||0)+1;if(state.mode==='mistakes'&&ok&&state.mistakes[key])state.recovered[key]=true;rememberPosition();save();render()}
+function showFeedback(q,a){let f=$('#feedback');if(!f||!a)return;f.className='feedback '+(a.ok?'':'wrong');let correct=q.type==='choice'?q.choices[q.answer]:q.answers[0];let status=state.mistakes[QUESTIONS.indexOf(q)]?(state.recovered[QUESTIONS.indexOf(q)]?' <span class="status">克服済み</span>':'') : '';f.innerHTML=a.ok?`<strong>正解です。</strong>${status}<div class="small">${q.ex}</div><div class="small">見直し：本誌 p.${q.page}</div>`:`<strong>もう一度見直そう。</strong><div class="small">正答：${correct}</div><div class="small">${q.ex}</div><div class="small">見直し：本誌 p.${q.page}</div>`}
+function renderSummary(list){clearInterval(state.timer);let score=list.filter(q=>state.answers[QUESTIONS.indexOf(q)]?.ok).length;if(!state.recordedThisSession){state.history.unshift({at:new Date().toLocaleString('ja-JP'),mode:modeLabel(state.mode),unit:state.unit,score,total:list.length});state.history=state.history.slice(0,30);state.recordedThisSession=true;state.resume=null;save()}$('#count').textContent=`${state.mode==='test'?'テスト':'今回の学習'} 完了`;$('#score').textContent=`${score} / ${list.length}問`;$('#bar').style.width='100%';$('#app').innerHTML=`<section class="card summary"><div class="small">今回の結果</div><strong>${score} / ${list.length}</strong><p>${score===list.length?'よくできました。':'間違えた問題は「間違えた問題」から解き直せます。'}</p><div class="actions" style="justify-content:center"><button class="btn" id="again">もう一度解く</button><button class="btn secondary" id="rankBtn">苦手ランキング</button><button class="btn secondary" id="historyBtn">学習履歴</button></div></section>`;$('#again').onclick=()=>{state.index=0;startMode();render()};$('#rankBtn').onclick=()=>{state.mode='rank';render()};$('#historyBtn').onclick=()=>{state.mode='history';render()}}
+function renderRank(){let rows=Object.entries(state.mistakes).map(([key,count])=>({q:QUESTIONS[key],count,recovered:state.recovered[key]})).sort((a,b)=>b.count-a.count).slice(0,10);$('#count').textContent='苦手ランキング';$('#score').textContent=`${rows.length}問`;$('#bar').style.width='100%';$('#app').innerHTML=`<section class="card"><h2>苦手ランキング</h2><p class="small">間違えた回数が多い順です。解き直して正解すると「克服済み」になります。</p>${rows.length?`<div class="rank">${rows.map((r,i)=>`<div class="rank-row"><strong>${i+1}</strong><span>${r.q.q}<br><small>本誌 p.${r.q.page}・${r.q.unit} ${r.recovered?'<span class="status">克服済み</span>':'<span class="status pending">要復習</span>'}</small></span><b>${r.count}回</b></div>`).join('')}</div>`:'<p>まだ間違えた問題はありません。</p>'}</section>`}
+function renderPageRank(){let pages={};Object.entries(state.mistakes).forEach(([key,count])=>{let q=QUESTIONS[key],p=q.page;if(!pages[p])pages[p]={page:p,unit:q.unit,wrong:0,mastered:0};pages[p].wrong+=count;if(state.recovered[key])pages[p].mastered++});let rows=Object.values(pages).sort((a,b)=>b.wrong-a.wrong);$('#count').textContent='苦手ページ';$('#score').textContent=`${rows.length}ページ`;$('#bar').style.width='100%';$('#app').innerHTML=`<section class="card"><h2>ページ別のつまずき</h2><p class="small">間違いが多い本誌ページから見直せます。「ワーク p.○○を見る」で資料も確認できます。</p>${rows.length?`<div class="rank">${rows.map(r=>`<div class="rank-row"><strong>p.${r.page}</strong><span>${r.unit}<br><small>間違い ${r.wrong}回・克服済み ${r.mastered}問</small></span><button class="btn secondary" data-page="${r.page}">資料を見る</button></div>`).join('')}</div>`:'<p>まだページ別の記録はありません。</p>'}</section>`;document.querySelectorAll('[data-page]').forEach(b=>b.onclick=()=>{let q=QUESTIONS.find(x=>String(x.page)===b.dataset.page);if(q){state.mode='all';state.unit=q.unit;state.index=unitList().indexOf(q);render()}})}
+function renderHistory(){let rows=state.history||[];$('#count').textContent='学習履歴';$('#score').textContent=`${rows.length}回`;$('#bar').style.width='100%';$('#app').innerHTML=`<section class="card"><h2>学習履歴</h2><p class="small">直近30回分を、この端末に保存しています。</p>${rows.length?`<div>${rows.map(r=>`<div class="history-row"><span>${r.at}<br><small>${r.mode}・${r.unit}</small></span><strong>${r.score} / ${r.total}</strong><span class="status">${Math.round(r.score/r.total*100)}%</span></div>`).join('')}</div>`:'<p>まだ学習履歴がありません。</p>'}</section>`}
+render();
+</script></body></html>
